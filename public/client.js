@@ -58,7 +58,9 @@ $( document ).ready(function() {
     });
   });
   
-  $('#newBook').click(function() {
+  $('#newBook').click(function(e) {
+   // console.log( $('#newBookForm').serialize())
+   e.preventDefault();
     $.ajax({
       url: '/api/books',
       type: 'post',
@@ -66,11 +68,15 @@ $( document ).ready(function() {
       data: $('#newBookForm').serialize(),
       success: function(data) {
         //update list
+        console.log("book added")
+        console.log('data: ', data)
+       
       }
     });
   });
   
-  $('#deleteAllBooks').click(function() {
+  $('#deleteAllBooks').click(function(e) {
+    e.preventDefault();
     $.ajax({
       url: '/api/books',
       type: 'delete',

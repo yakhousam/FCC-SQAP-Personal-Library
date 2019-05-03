@@ -1,4 +1,3 @@
-const mongodb = require('mongodb');
 const mongoClient = require('mongodb').MongoClient;
 
 const {DB = 'mongodb://localhost:27017/books'} = process.env;
@@ -11,7 +10,8 @@ async function connectDB(){
     }
     return client.db();
 }
-//CRUD Create book
+
+//CRUD Create a book
 async function create(title){
     const db = await connectDB();
     const collection = db.collection('book')
@@ -20,7 +20,7 @@ async function create(title){
 }
 module.exports.newBook = create;
 
-//CRUD Find
+//CRUD Find all books
 async function find(){
     const db = await connectDB();
     const collection = db.collection('book')
@@ -29,7 +29,7 @@ async function find(){
 }
 module.exports.find = find;
 
-//CRUD FindByID
+//CRUD Find one book by it's ID
 async function findByID(id){
     const db = await connectDB();
     const collection = db.collection('book');
@@ -38,7 +38,7 @@ async function findByID(id){
 }
 module.exports.findByID = findByID;
 
-//CRUD addComment
+//CRUD add new comment
 async function addComment(id, comment){
     const db = await connectDB();
     const collection= db.collection('book')
@@ -47,7 +47,7 @@ async function addComment(id, comment){
 }
 module.exports.addComment = addComment;
 
-//CRUD Delete by ID
+//CRUD Delete book by ID
 async function deleteById(id){
     const db = await connectDB()
     const collection = db.collection('book')

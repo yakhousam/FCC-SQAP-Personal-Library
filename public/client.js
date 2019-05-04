@@ -68,22 +68,20 @@ $( document ).ready(function() {
       data: $('#newBookForm').serialize(),
       success: function(data) {
         //update list
-        console.log("book added")
-        console.log('data: ', data)
-       
+        window.location.reload();
       }
     });
   });
   
   $('#deleteAllBooks').click(function(e) {
-    e.preventDefault();
     $.ajax({
       url: '/api/books',
       type: 'delete',
-      dataType: 'json',
+      dataType: 'text',
       data: $('#newBookForm').serialize(),
       success: function(data) {
         //update list
+        window.location.reload();
       }
     });
   }); 
